@@ -1,13 +1,8 @@
-ImageUploader = require '../image_upload'
+SpecCompiler = require '../spec_compiler'
 expect = require('chai').expect
 
 before ->
-  @reader = new ImageUploader("../decks.coffee")
-
-
-it 'reads a coffeescript json file', ->
-  #assert(uploader)
-  reader = new ImageUploader("../decks.coffee")
+  @compiler = new SpecCompiler("../decks.coffee", "../../skate-images")
 
 it 'can compile a brand', ->
   brand =
@@ -23,7 +18,7 @@ it 'can compile a brand', ->
       wb: "17.5"
       width: "9.5"
       thumb: "shred35.tiff"
-  result = @reader.compile_brand(brand)[0]
+  result = @compiler.compile_brand(brand)[0]
 
   #expect(result.brand).to.equal("comet")
   #expect(result.name).to.equal("shred35")
@@ -56,8 +51,14 @@ it 'can compile models with colors', ->
         color: "blue"
         thumb: "DogStar_Blue.jpg"
     ]
-  console.log(@reader.compile_brand(orig))
-  expect(@reader.compile_brand(orig)).to.deep.equal(compiled)
+  console.log(@compiler.compile_brand(orig))
+  expect(@compiler.compile_brand(orig)).to.deep.equal(compiled)
+
+it 'compiles picture names into picture data', ->
+
+
+it 'transforms a full spec file', ->
+
 
 
 it 'compiles models into a firebase format', ->

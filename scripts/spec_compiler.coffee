@@ -1,16 +1,9 @@
-# run rom skateshop directory
-# coffee scripts/image_upload.coffee
+# run from skateshop directory
+# coffee scripts/spec_compiler.coffee
 
-fs = require 'fs'
 Firebase = require 'Firebase'
-fb_ref = new Firebase('https://greent.firebaseIO.com/items')
+fs = require 'fs'
 _ = require 'underscore'
-
-# get file in directory
-# get file names
-# iterate over file names
-# get file data
-#
 
 deck_colorway = (deck_specs, name, color, images) ->
   copy = _.clone(deck_specs)
@@ -27,14 +20,35 @@ compile_deck = (brand, name, specs) ->
     specs.name = name
     specs
 
-class ImageUpload
-  constructor: (@filename) ->
+class SpecCompiler
+  constructor: (@spec_filename, @img_directory, @firebase_url) ->
+    @fb_ref = new Firebase(@firebase_url)
 
   compile_brand: (brand_obj) ->
     brand_name = _.keys(brand_obj)[0]
     decks = brand_obj[brand_name]
     cs = (compile_deck(brand_name, name, specs) for name, specs of decks)
-    _.flatten(cs, true)
+    deck_list = _.flatten(cs, true)
+
+  compile_images: (deck_obj) ->
+    filename = "#{@img_directory}/#{deck_obj.thumb}"
+    img_data = fs.readFileSync(filename, {encoding: 'base64'})
+    deck_obj.thumb = img_data
+    deck_obj
+
+  compile: ->
+    deck_list = (@compile_brand(brand) for brand in require(@spec_filename))
+    deck_list = _.flatten(deck_list, true)
+    (@compile_images(deck) for deck in deck_list)
+
+  upload: ->
+    @fb_ref.child(i).set(deck) for deck, i in @compile()
+
+
+
+
+
+
 
 #files = fs.readdirSync('../skate-images/')
 
@@ -42,4 +56,4 @@ class ImageUpload
 
 # fb_ref.child(i).set(image) for image, i in images
 
-module.exports = ImageUpload
+module.exports = SpecCompiler
