@@ -1,0 +1,12 @@
+<h1> decks! </h1>
+
+<ul class="large-block-grid-4 small-block-grid-2">
+<div ng-repeat="deck in deckList">
+  <li>
+  {{ deck.name }}
+  {{ deck.brand }}
+  {{ deck.width }}
+  <img src="data:image/png;base64,{{ deck.thumb }}" />
+  </li>
+</div>
+</ul>
