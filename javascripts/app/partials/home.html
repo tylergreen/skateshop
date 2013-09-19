@@ -1,11 +1,9 @@
 <div class="row">
   <div class="large-12 colunms">
-	<h1> Home page </h1>
-
 	<div ng-controller="HomeCtrl">
 	  <carousel interval="myInterval">
-		<slide ng-repeat="slide in slides" active="slide.active">
-		  <img ng-src="{{slide.image}}" style="margin:auto;">
+		<slide ng-repeat="slide in myslides" active="slide.active">
+		  <img ng-src="{{slide.image}}" style="margin:auto; max-height:20em; width:auto;">
 		</slide>
 	  </carousel>
 	</div>
