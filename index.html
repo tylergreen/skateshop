@@ -20,11 +20,19 @@
 <body ng-app="App">
 
 	<div class="row">
-		<div class="large-12 columns">
+		<div class="large-11 columns">
 			<h2>Tyler's Skateshop</h2>
 			<hr />
 			<a href="#/home">Home</a>
 			<a href="#/decks">Decks</a>
+		</div>
+		<div class="large-1 columns"
+			 ng-controller="cartCtrl"
+			 >
+		  Cart: {{ items.length }}
+		  </div>
+
+		  
 		</div>
 	</div>
 

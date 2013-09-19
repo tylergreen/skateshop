@@ -2,7 +2,6 @@ function partials(file){
 	return 'javascripts/app/partials/' + file
 }
 
-
 var App = angular.module('App', ['firebase', 'ui.bootstrap']).
 	config(['$routeProvider', function($routeProvider){
 				$routeProvider.
@@ -13,6 +12,13 @@ var App = angular.module('App', ['firebase', 'ui.bootstrap']).
 			
 ]);
 
+App.factory("shoppingCart", function() {
+	return {
+		items: []
+	};
+});
+
+
 function HomeCtrl($scope) {
   $scope.myInterval = 6000;
   $scope.myslides = [{image: '../../skate-images/pool-crusher-deepend-wilson.jpg', text: 'Pool King Pool Crusher'},
@@ -22,17 +28,22 @@ function HomeCtrl($scope) {
 };
 
 
-
 // App.constant('decksUrl', 'https://greent.firebaseio.com/skateshop/products/decks');
 App.constant('decksUrl', 'https://greent.firebaseio.com/mydecks');
 
-function DeckCtrl($scope, angularFire, decksUrl){
+function DeckCtrl($scope, angularFire, decksUrl, shoppingCart){
 	var promise = angularFire(decksUrl, $scope, 'deckList', []);
 	
 	$scope.imageDetail = function(deck){
 		$scope.deckDetail = deck;
-	}
+	};
+	
+	$scope.addToCart = function(deck){
+		shoppingCart.items.push(deck.name)
+	};
+}
 
-
+function cartCtrl($scope, shoppingCart){
+	$scope.items = shoppingCart.items;
 }
 
