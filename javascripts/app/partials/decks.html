@@ -5,10 +5,12 @@
 	<ul class="large-block-grid-4 small-block-grid-2">
 	  <li ng-repeat="deck in deckList" 
 		  ng-click="imageDetail(deck)">
-		<img src="data:image/png;base64,{{ deck.thumb }}"
-			 alt="{{ deck.name }}"
-			 />
-		<div>{{ deck.brand }} {{ deck.name }} </div>
+		<a>
+		  <img src="data:image/png;base64,{{ deck.thumb }}"
+			   alt="{{ deck.name }}"
+			   />
+		  <div>{{ deck.brand }} {{ deck.name }} </div>
+		</a>
 	  </li>
 	</ul>
 </div>
