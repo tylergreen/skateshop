@@ -1,12 +1,26 @@
-<h1> decks! </h1>
+<div class="row">
+  <div class="large-8 columns">
+  <h1> decks! </h1>
 
-<ul class="large-block-grid-4 small-block-grid-2">
-	<li ng-repeat="deck in deckList">
-	  <img src="data:image/png;base64,{{ deck.thumb }}" alt="{{ deck.name }}" />
-	  <div>{{ deck.brand }}</div>
-	  <div>{{ deck.name }}</div>
-	  <div>{{ deck.width }}</div>
-	  <div>{{ deck.wb }}</div>
-	</li>
-</ul>
+	<ul class="large-block-grid-4 small-block-grid-2">
+	  <li ng-repeat="deck in deckList" 
+		  ng-click="imageDetail(deck)">
+		<img src="data:image/png;base64,{{ deck.thumb }}"
+			 alt="{{ deck.name }}"
+			 />
+		<div>{{ deck.brand }} {{ deck.name }} </div>
+	  </li>
+	</ul>
+</div>
 
+  <div class="large-4 columns">
+	<div id="productInfo" ng-show="deckDetail">
+	  <img src="data:image/png;base64,{{ deckDetail.thumb }}"
+		   alt=""
+			 />
+	  <div>{{ deckDetail.name }}</div>
+	  <div>Width: {{ deckDetail.width }}</div>
+	<div>Wheelbase: {{ deckDetail.wb }}</div>
+	<button> Add to cart </button>
+	</div>
+  </div>
