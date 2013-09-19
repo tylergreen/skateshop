@@ -15,19 +15,10 @@ var App = angular.module('App', ['firebase', 'ui.bootstrap']).
 
 function HomeCtrl($scope) {
   $scope.myInterval = 6000;
-  var slides = $scope.slides = [];
-  $scope.addSlide = function() {
-	  
-    var newWidth = 200 + ((slides.length + (25 * slides.length)) % 150);
-    slides.push({
-      image: 'http://placekitten.com/' + newWidth + '/200',
-      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    });
-  };
-  for (var i=0; i<4; i++) {
-    $scope.addSlide();
-  }
+  $scope.myslides = [{image: '../../skate-images/pool-crusher-deepend-wilson.jpg', text: 'Pool King Pool Crusher'},
+					{image: '../../skate-images/powerstation-hyperkick.jpg', text: 'Adventures with the Pool King Crown Hyper Kick'}
+];
+	
 };
 
 
@@ -37,5 +28,11 @@ App.constant('decksUrl', 'https://greent.firebaseio.com/mydecks');
 
 function DeckCtrl($scope, angularFire, decksUrl){
 	var promise = angularFire(decksUrl, $scope, 'deckList', []);
+	
+	$scope.imageDetail = function(deck){
+		$scope.deckDetail = deck;
+	}
+
+
 }
 
