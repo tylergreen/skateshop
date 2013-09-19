@@ -7,6 +7,7 @@ var App = angular.module('App', ['firebase', 'ui.bootstrap']).
 				$routeProvider.
 					when('/', { templateUrl: partials('home.html'), controller: HomeCtrl } ).
 					when('/decks', {templateUrl: partials('decks.html'),  controller: DeckCtrl } ).
+					when('/cart', {templateUrl: partials('cart.html'),  controller: CartCtrl } ).
 					otherwise({ redirectTo: '/' });
 			}
 			
@@ -39,11 +40,10 @@ function DeckCtrl($scope, angularFire, decksUrl, shoppingCart){
 	};
 	
 	$scope.addToCart = function(deck){
-		shoppingCart.items.push(deck.name)
+		shoppingCart.items.push(deck.name);
 	};
 }
 
-function cartCtrl($scope, shoppingCart){
+function CartCtrl($scope, shoppingCart){
 	$scope.items = shoppingCart.items;
 }
-
