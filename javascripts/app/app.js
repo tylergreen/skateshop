@@ -14,11 +14,16 @@ var App = angular.module('App', ['firebase', 'ui.bootstrap']).
 ]);
 
 App.factory("shoppingCart", function() {
+	var items = [];
 	return {
-		items: []
+		contents: function(){
+			return items;
+		},
+		addToCart: function(product){
+			items.push(product);
+		},
 	};
 });
-
 
 function HomeCtrl($scope) {
   $scope.myInterval = 6000;
@@ -39,11 +44,9 @@ function DeckCtrl($scope, angularFire, decksUrl, shoppingCart){
 		$scope.deckDetail = deck;
 	};
 	
-	$scope.addToCart = function(deck){
-		shoppingCart.items.push(deck.name);
-	};
-}
+	$scope.addToCart = shoppingCart.addToCart;
+};
 
 function CartCtrl($scope, shoppingCart){
-	$scope.items = shoppingCart.items;
+	$scope.contents = shoppingCart.contents();
 }
