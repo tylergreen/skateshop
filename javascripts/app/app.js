@@ -25,10 +25,13 @@ App.factory("shoppingCart", function() {
 	};
 });
 
+
 function HomeCtrl($scope) {
   $scope.myInterval = 6000;
   $scope.myslides = [{image: '../../skate-images/pool-crusher-deepend-wilson.jpg', text: 'Pool King Pool Crusher'},
-					{image: '../../skate-images/powerstation-hyperkick.jpg', text: 'Adventures with the Pool King Crown Hyper Kick'}
+					{image: '../../skate-images/powerstation-hyperkick.jpg', text: 'Adventures with the Pool King Crown Hyper Kick'},
+					 {image: '../../skate-images/tony-alva-dogstar-stubbie.png', text: 'Tony Alva Dogstar Stubbie' }
+
 ];
 	
 };
