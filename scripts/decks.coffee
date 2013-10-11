@@ -5,17 +5,20 @@ decks =
       wb: "17.5"
       width: "9.5"
       thumb: "thumb_26547_CometShred35-2012-deckTn.jpg"
+      price: "89.95"
 
     shred38:
       width: "9.5"
       wb: "20.5"
       thumb: "thumb_26548_CometShred38-2012-deckTn.jpg"
+      price: "89.95"
 
 ,
   poolking:
     dogstar:
       wb: "16"
       width: "9.5"
+      price: "64.95"
       colorways:
         red:
           thumb: "thumb_25842_PoolKing_DogStar_Red_BottomTN.jpg"
@@ -25,11 +28,13 @@ decks =
     down_south_stinger:
       width: "9.5"
       wb: "18"
+      price: "63.95"
       thumb: "thumb_8443_Pool_King_Stinger_Mid_BottomTN.jpg"
 
     short_stuff:
       width: "9.75"
       wb: "20"
+      price: "69.95"
       colorways:
         purple:
           thumb: "PoolKing_ShortStuff_Purple_Thumb.jpg"
@@ -42,11 +47,13 @@ decks =
     pool_cue:
       width: "10"
       wb: "16.25"
+      price: "59.95"
       thumb: "thumb_7999_Deckcrafters_Pool_Cue_Woody_BottomTN.jpg"
 
     pool_shark:
       width: "11"
       wb: "16.5"
+      price: "56.95"
       thumb: "thumb_36028_DeckCrafter_PoolShark_BTN.jpg"
 
 
