@@ -16,13 +16,14 @@
 </div>
 
   <div class="large-4 columns">
-	<div id="productInfo" ng-show="deckDetail">
+	<div id="productInfo" ng-show="deckDetail" style="position: fixed; top: 10em;">
 	  <img src="data:image/png;base64,{{ deckDetail.thumb }}"
 		   alt=""
 			 />
 	  <div>{{ deckDetail.name }}</div>
 	  <div>Width: {{ deckDetail.width }}</div>
-	<div>Wheelbase: {{ deckDetail.wb }}</div>
+	  <div>Wheelbase: {{ deckDetail.wb }}</div>
+	  <div>Price: ${{ deckDetail.price }}</div>
 	<button ng-click="addToCart(deckDetail)"> Add to cart </button>
 	</div>
   </div>
