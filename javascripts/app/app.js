@@ -22,6 +22,12 @@ App.factory("shoppingCart", function() {
 		addToCart: function(product){
 			items.push(product);
 		},
+		total: function(){
+				return items.reduce(
+					function(sum, product) {
+						return sum + parseFloat(product.price)
+					}, 0);
+		}
 	};
 });
 
@@ -39,6 +45,8 @@ function HomeCtrl($scope) {
 
 // App.constant('decksUrl', 'https://greent.firebaseio.com/skateshop/products/decks');
 App.constant('decksUrl', 'https://greent.firebaseio.com/mydecks');
+App.constant('trucksUrl', 'https://greent.firebaseio.com/trucks');
+App.constant('wheelsUrl', 'https://greent.firebaseio.com/wheels');
 
 function DeckCtrl($scope, angularFire, decksUrl, shoppingCart){
 	var promise = angularFire(decksUrl, $scope, 'deckList', []);
@@ -52,4 +60,5 @@ function DeckCtrl($scope, angularFire, decksUrl, shoppingCart){
 
 function CartCtrl($scope, shoppingCart){
 	$scope.contents = shoppingCart.contents();
+	$scope.total = shoppingCart.total();
 }
