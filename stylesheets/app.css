@@ -7216,3 +7216,8 @@ a.th {
 .f-dropdown.large {
   max-width: 800px;
 }
+
+#checkout_list li img {
+height: 100px;
+width: 100px;
+}
